@@ -12,7 +12,6 @@
                 </li>
                 <?php 
                 session_start();
-                $_SESSION['user-logged-in'] = true;
                 if(isset($_SESSION['user-logged-in'])) :
                 ?>
                 <li class = "nav-item">
@@ -25,7 +24,7 @@
                     else :
                 ?>
                 <li class = "nav-item">
-                    <a class = "nav-link" href = "#">Sign up</a>
+                    <a class = "nav-link" href = "userCreate.php">Sign up</a>
                 </li>
                 <li class = "nav-item">
                     <a class = "nav-link" href = "#">Sign in</a>
