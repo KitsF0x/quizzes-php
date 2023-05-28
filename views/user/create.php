@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-body">
                 <h3>Sign up</h3>
-                <form action="#" method="POST">
+                <form action="userStore.php" method="POST">
                     <div class="mb-3">
                         <label for="inputFirstName" class="form-label">First name</label>
                         <input type="text" class="form-control" id="inputFirstName" name="firstName" required>
