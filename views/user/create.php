@@ -33,7 +33,7 @@
                         <input type="text" class="form-control" id="inputNick" name="nick" required>
                     </div>
                     <div class="mb-3">
-                        <label for="inputPassword" class="form-label">Passowrd</label>
+                        <label for="inputPassword" class="form-label">Passoword</label>
                         <input type="password" class="form-control" id="inputPassword" name="password" required>
                     </div>
                     <div class="mb-3">
