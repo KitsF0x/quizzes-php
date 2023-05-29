@@ -3,7 +3,7 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-                <h3>Sign in</h3>
+                <h3 class="text-center">Sign in</h3>
 
                 <?php if (isset($_SESSION['error'])): ?>
 
