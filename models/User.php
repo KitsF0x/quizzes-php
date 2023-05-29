@@ -2,9 +2,12 @@
 
 namespace models;
 
+require_once '../config.php';
+
 class User {
 
     private $id;
+    private $nick;
     private $first_name;
     private $last_name;
     private $email;
@@ -16,6 +19,14 @@ class User {
 
     public function setId($id) {
         $this->id = $id;
+    }
+
+    public function getNick() {
+        return $this->nick;
+    }
+
+    public function setNick($nick) {
+        $this->nick = $nick;
     }
 
     public function getFirst_name() {
@@ -51,13 +62,13 @@ class User {
     }
 
     public function save() {
-        require_once '../config.php';
         $pdo = new \PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USERNAME, DB_PASSWORD);
 
-        $sql = "INSERT INTO users (first_name, last_name, email, password) 
-                VALUES (:firstName, :lastName, :email, :password)";
+        $sql = "INSERT INTO users (nick, first_name, last_name, email, password) 
+                VALUES (:nick, :firstName, :lastName, :email, :password)";
 
         $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':nick', $this->nick);
         $stmt->bindParam(':firstName', $this->first_name);
         $stmt->bindParam(':lastName', $this->last_name);
         $stmt->bindParam(':email', $this->email);
@@ -69,6 +80,15 @@ class User {
         } catch (PDOException $e) {
             //todo
         }
+    }
+
+    public function checkIfValueExists($column, $value) : bool {
+        $pdo = new \PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USERNAME, DB_PASSWORD);
+        $sql = "SELECT * FROM users WHERE $column = :value";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(":value", $value);
+        $stmt->execute();
+        return ($stmt->rowCount() > 0);
     }
 
 }

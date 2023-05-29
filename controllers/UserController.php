@@ -12,12 +12,25 @@ class UserController {
 
     public function store(array $data) {
         $user = new \models\User();
+        $user->setNick($data['nick']);
         $user->setFirst_name($data['firstName']);
         $user->setLast_name($data['lastName']);
         $user->setEmail($data['email']);
         $user->setPassword($data['password']);
 
-        $user->save();
+        if ($user->checkIfValueExists('nick', $user->getNick())) {
+            session_start();
+            $_SESSION['error'] = "User " . $user->getNick() . " already exists";
+            header('Location: UserCreate.php');
+            die();
+        } else {
+            try {
+                $user->save();
+            } catch (Exception $ex) {
+                $_SESSION['error'] = 'Cannot sign up. Check data in form and try again.';
+                header('Location: userCreate.php');
+            }
+            header('Location: index.php');
+        }
     }
-
 }
