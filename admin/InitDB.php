@@ -20,7 +20,10 @@ ALTER TABLE `users`
 
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-COMMIT;';
+
+COMMIT;
+ALTER TABLE `users` ADD `nick` TEXT NOT NULL AFTER `id`; 
+';
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
