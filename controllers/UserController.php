@@ -56,5 +56,8 @@ class UserController {
         header("Location: index.php");
         exit();
     }
-
+    
+    public function show() {
+        require('../views/user/show.php');
+    }
 }

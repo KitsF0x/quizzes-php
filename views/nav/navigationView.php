@@ -14,7 +14,7 @@
                 if(isset($_SESSION['user-logged-in'])) :
                 ?>
                 <li class = "nav-item">
-                    <a class = "nav-link" href = "#"><?php echo $_SESSION['user-nick'];?></a>
+                    <a class = "nav-link" href = "userProfile.php"><?php echo $_SESSION['user-nick'];?></a>
                 </li>
                 <li class = "nav-item">
                     <a class = "nav-link" href = "userLogout.php">Logout</a>
