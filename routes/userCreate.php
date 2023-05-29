@@ -1,6 +1,6 @@
 <?php
 @session_start();
-if($_SESSION['user-logged-in']) {
+if(isset($_SESSION['user-logged-in'])) {
     header("Location: index.php");
     exit();
 }
