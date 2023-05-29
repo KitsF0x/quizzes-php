@@ -11,11 +11,10 @@
                     <a class="nav-link" href="#">Quizzes</a>
                 </li>
                 <?php 
-                session_start();
                 if(isset($_SESSION['user-logged-in'])) :
                 ?>
                 <li class = "nav-item">
-                    <a class = "nav-link" href = "#">Your account</a>
+                    <a class = "nav-link" href = "#"><?php echo $_SESSION['user-nick'];?></a>
                 </li>
                 <li class = "nav-item">
                     <a class = "nav-link" href = "#">Create quiz</a>

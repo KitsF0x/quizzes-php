@@ -30,7 +30,15 @@ class UserController {
                 $_SESSION['error'] = 'Cannot sign up. Check data in form and try again.';
                 header('Location: userCreate.php');
             }
+            $_SESSION['user-logged-in'] = true;
+            $_SESSION['user-id'] = $user->getId();
+            $_SESSION['user-nick'] = $user->getFirst_name();
+            $_SESSION['user-first-name'] = $user->getFirst_name();
+            $_SESSION['user-last-name'] = $user->getLast_name();
+            $_SESSION['user-email'] = $user->getLast_name();
+            $_SESSION['user-password'] = $user->getLast_name();
             header('Location: index.php');
         }
     }
+
 }
