@@ -17,6 +17,9 @@
                     <a class = "nav-link" href = "#"><?php echo $_SESSION['user-nick'];?></a>
                 </li>
                 <li class = "nav-item">
+                    <a class = "nav-link" href = "userLogout.php">Logout</a>
+                </li>
+                <li class = "nav-item">
                     <a class = "nav-link" href = "#">Create quiz</a>
                 </li>
                 <?php 

@@ -40,5 +40,10 @@ class UserController {
             header('Location: index.php');
         }
     }
+    
+    public function logout() {
+        session_destroy();
+        header("Location: index.php");
+    }
 
 }
