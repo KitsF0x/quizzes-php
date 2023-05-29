@@ -32,7 +32,7 @@ class UserController {
             }
             $_SESSION['user-logged-in'] = true;
             $_SESSION['user-id'] = $user->getId();
-            $_SESSION['user-nick'] = $user->getFirst_name();
+            $_SESSION['user-nick'] = $user->getNick();
             $_SESSION['user-first-name'] = $user->getFirst_name();
             $_SESSION['user-last-name'] = $user->getLast_name();
             $_SESSION['user-email'] = $user->getLast_name();
