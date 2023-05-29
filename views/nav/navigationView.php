@@ -29,7 +29,7 @@
                     <a class = "nav-link" href = "userCreate.php">Sign up</a>
                 </li>
                 <li class = "nav-item">
-                    <a class = "nav-link" href = "#">Sign in</a>
+                    <a class = "nav-link" href = "userLoginForm.php">Sign in</a>
                 </li>
                 <?php 
                     endif;

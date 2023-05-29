@@ -82,13 +82,34 @@ class User {
         }
     }
 
-    public function checkIfValueExists($column, $value) : bool {
+    public function checkIfValueExists($column, $value): bool {
         $pdo = new \PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USERNAME, DB_PASSWORD);
         $sql = "SELECT * FROM users WHERE $column = :value";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":value", $value);
         $stmt->execute();
         return ($stmt->rowCount() > 0);
+    }
+
+    public function login() {
+        $pdo = new \PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USERNAME, DB_PASSWORD);
+        $sql = "SELECT * FROM users WHERE nick = :nick AND password = :password";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(":nick", $this->getNick());
+        $stmt->bindValue(":password", $this->getPassword());
+        $stmt->execute();
+        $user = $stmt->fetch(\PDO::FETCH_ASSOC);
+        if ($user) {
+            $_SESSION['user-logged-in'] = true;
+            $_SESSION['user-id'] = $user['id'];
+            $_SESSION['user-nick'] = $user['nick'];
+            $_SESSION['user-first-name'] = $user['first_name'];
+            $_SESSION['user-last-name'] = $user['last_name'];
+            $_SESSION['user-email'] = $user['email'];
+            $_SESSION['user-password'] = $user['password'];
+            return true;
+        }
+        return false;
     }
 
 }

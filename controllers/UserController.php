@@ -30,20 +30,31 @@ class UserController {
                 $_SESSION['error'] = 'Cannot sign up. Check data in form and try again.';
                 header('Location: userCreate.php');
             }
-            $_SESSION['user-logged-in'] = true;
-            $_SESSION['user-id'] = $user->getId();
-            $_SESSION['user-nick'] = $user->getNick();
-            $_SESSION['user-first-name'] = $user->getFirst_name();
-            $_SESSION['user-last-name'] = $user->getLast_name();
-            $_SESSION['user-email'] = $user->getLast_name();
-            $_SESSION['user-password'] = $user->getLast_name();
+            $user->login();
             header('Location: index.php');
         }
     }
-    
+
     public function logout() {
         session_destroy();
         header("Location: index.php");
+    }
+
+    public function loginForm() {
+        require('../views/user/login.php');
+    }
+
+    public function login(array $data) {
+        $user = new \models\User();
+        $user->setNick($data['nick']);
+        $user->setPassword($data['password']);
+        if (!$user->login()) {
+            $_SESSION['error'] = 'Cannot log in. Check data and try again';
+            header("Location: userLoginForm.php");
+            exit();
+        }
+        header("Location: index.php");
+        exit();
     }
 
 }
