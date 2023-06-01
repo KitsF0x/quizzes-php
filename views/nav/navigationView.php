@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg border-bottom">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.php">Home</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,6 +15,9 @@
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li>
                                 <a class="dropdown-item" href="userProfile.php">Your profile</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="quizList.php">Your quizes</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="userLogout.php">Logout</a>
