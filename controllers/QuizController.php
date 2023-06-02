@@ -27,4 +27,8 @@ class QuizController {
         header("Location: quizList.php");
     }
 
+    public function edit(array $data) {
+        require '../views/quiz/edit.php';
+    }
+
 }

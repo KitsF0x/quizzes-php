@@ -15,7 +15,11 @@
                             <h4> <?php echo $el->getDescription(); ?> </h4>
                             <button class="btn btn-primary">Run</button>
                             <button class="btn btn-success">Stats</button>
-                            <button class="btn btn-warning">Edit</button>
+                            <form action="../routes/quizEdit.php" method="POST">
+                                <input type="hidden" value="<?php echo $el->getId(); ?>" name="id"/>
+                                <button class="btn btn-warning">Edit</button>
+                            </form>
+
                             <form action="../routes/quizDelete.php" method="POST">
                                 <input type="hidden" value="<?php echo $el->getId(); ?>" name="id"/>
                                 <button type="submit" class="btn btn-danger">Delete</button>
