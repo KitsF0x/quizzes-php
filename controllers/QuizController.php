@@ -18,13 +18,13 @@ class QuizController {
     public function store(array $data) {
         $quizService = new \services\QuizService();
         $quizService->storeQuizInDatabase($data);
-        header("Location: index.php");
+        header("Location: quizList.php");
     }
 
     public function delete(array $data) {
         $quizService = new \services\QuizService();
         $quizService->delete($data);
-        header("Location: index.php");
+        header("Location: quizList.php");
     }
 
 }
