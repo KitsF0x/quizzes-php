@@ -7,7 +7,7 @@ require '../layout/up.php'; ?>
             <div class="card-body">
                 <h3 class="text-center">Create a new quiz</h3>
                 
-                <?php require('../utils/errorAlert.php');?>
+                <?php require('../views/utils/errorAlert.php');?>
                 <form action="quizStore.php" method="POST">
                     <div class="mb-3">
                         <label for="inputName" class="form-label">Name</label>
