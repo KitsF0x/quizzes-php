@@ -8,12 +8,14 @@ function ifVaraibaleInSessionIsSet(string $variable) {
 function redirectIfVariableInSessionIsSet(string $variable, string $location) {
     if (ifVaraibaleInSessionIsSet($variable)) {
         header("Location: " . $location);
+        exit();
     }
 }
 
 function redirectIfVariableInSessionIsNotSet(string $variable, string $location) {
     if (!ifVaraibaleInSessionIsSet($variable)) {
         header("Location: " . $location);
+        exit();
     }
 }
 

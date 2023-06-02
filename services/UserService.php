@@ -20,16 +20,18 @@ class UserService {
             session_start();
             $_SESSION['error'] = "User " . $user->getNick() . " already exists";
             header('Location: UserCreate.php');
-            die();
+            exit();
         } else {
             try {
                 $user->save();
             } catch (Exception $ex) {
                 $_SESSION['error'] = 'Cannot sign up. Check data in form and try again.';
                 header('Location: userCreate.php');
+                exit();
             }
             $user->login();
             header('Location: index.php');
+            exit();
         }
     }
 
