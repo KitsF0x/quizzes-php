@@ -1,9 +1,7 @@
 <?php
-@session_start(); 
-if(isset($_SESSION['user-logged-in'])) {
-    header("Location: index.php");
-    exit();
-}
+require_once ('../utils/sessionUtils.php');
+redirectToIndexIfUserIsLoggedIn();
+
 require_once ('../controllers/UserController.php');
 $userController = new controllers\UserController();
 $userController->login($_POST);
