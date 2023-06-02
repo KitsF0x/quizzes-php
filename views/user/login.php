@@ -5,16 +5,7 @@
             <div class="card-body">
                 <h3 class="text-center">Sign in</h3>
 
-                <?php if (isset($_SESSION['error'])): ?>
-
-                <div class="alert alert-danger" role="alert">
-                    <?php echo $_SESSION['error']; ?>
-                </div>
-
-                <?php
-                unset($_SESSION['error']);
-                endif;
-                ?>
+                <?php require('../views/utils/errorAlert.php');?>
                 <form action="userLogin.php" method="POST">
                     <div class="mb-3">
                         <label for="inputNick" class="form-label">Nick</label>
