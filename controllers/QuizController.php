@@ -20,4 +20,11 @@ class QuizController {
         $quizService->storeQuizInDatabase($data);
         header("Location: index.php");
     }
+
+    public function delete(array $data) {
+        $quizService = new \services\QuizService();
+        $quizService->delete($data);
+        header("Location: index.php");
+    }
+
 }

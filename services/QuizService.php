@@ -16,4 +16,9 @@ class QuizService {
         $quiz = $this->createNewQuiz($data);
         $quiz->save();
     }
+    
+    public function delete($data) {
+        $quiz = new \models\Quiz();
+        $quiz->deleteQuizById($data['id']);
+    }
 }
