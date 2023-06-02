@@ -1,0 +1,10 @@
+<?php if (ifVaraibaleInSessionIsSet('error')): ?>
+
+    <div class="alert alert-danger" role="alert">
+        <?php echo $_SESSION['error']; ?>
+    </div>
+
+    <?php
+    unset($_SESSION['error']);
+endif;
+?>

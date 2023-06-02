@@ -1,20 +1,13 @@
-<?php require '../layout/up.php'; ?>
+<?php 
+require_once ('../utils/sessionUtils.php');
+require '../layout/up.php'; ?>
 <div class="row d-flex justify-content-center">
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
                 <h3 class="text-center">Create a new quiz</h3>
-
-                <?php if (isset($_SESSION['error'])): ?>
-
-                <div class="alert alert-danger" role="alert">
-                    <?php echo $_SESSION['error']; ?>
-                </div>
-
-                <?php
-                unset($_SESSION['error']);
-                endif;
-                ?>
+                
+                <?php require('../utils/errorAlert.php');?>
                 <form action="quizStore.php" method="POST">
                     <div class="mb-3">
                         <label for="inputName" class="form-label">Name</label>
