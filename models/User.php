@@ -2,9 +2,9 @@
 
 namespace models;
 
-require_once '../config.php';
+require_once 'Model.php';
 
-class User {
+class User extends Model{
 
     private $id;
     private $nick;
@@ -62,7 +62,7 @@ class User {
     }
 
     public function save() {
-        $pdo = new \PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USERNAME, DB_PASSWORD);
+        $pdo = $this->createPDODatabaseConnection();
 
         $sql = "INSERT INTO users (nick, first_name, last_name, email, password) 
                 VALUES (:nick, :firstName, :lastName, :email, :password)";
@@ -83,7 +83,7 @@ class User {
     }
 
     public function checkIfValueExists($column, $value): bool {
-        $pdo = new \PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USERNAME, DB_PASSWORD);
+        $pdo = $this->createPDODatabaseConnection();
         $sql = "SELECT * FROM users WHERE $column = :value";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":value", $value);
@@ -92,7 +92,7 @@ class User {
     }
 
     public function login() {
-        $pdo = new \PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USERNAME, DB_PASSWORD);
+        $pdo = $this->createPDODatabaseConnection();
         $sql = "SELECT * FROM users WHERE nick = :nick AND password = :password";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(":nick", $this->getNick());

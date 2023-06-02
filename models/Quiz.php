@@ -2,9 +2,9 @@
 
 namespace models;
 
-require_once '../config.php';
+require_once 'Model.php';
 
-class Quiz {
+class Quiz extends Model{
 
     private $id;
     private $creatorId;
@@ -44,7 +44,7 @@ class Quiz {
     }
 
     public function save() {
-        $pdo = new \PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USERNAME, DB_PASSWORD);
+        $pdo = $this->createPDODatabaseConnection();
 
         $sql = "INSERT INTO quizzes (creatorId, title, description) 
                 VALUES (:creatorId, :title, :description)";
@@ -63,7 +63,7 @@ class Quiz {
     }
 
     public function checkIfValueExists($column, $value): bool {
-        $pdo = new \PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USERNAME, DB_PASSWORD);
+        $pdo = $this->createPDODatabaseConnection();
         $sql = "SELECT * FROM quizzes WHERE $column = :value";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":value", $value);
@@ -72,7 +72,7 @@ class Quiz {
     }
 
     public function getQuizesCreatedByUserWithId($id) {
-        $pdo = new \PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USERNAME, DB_PASSWORD);
+        $pdo = $this->createPDODatabaseConnection();
         $sql = "SELECT * FROM quizzes WHERE creatorId = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam('id', $id);
@@ -93,7 +93,7 @@ class Quiz {
     }
     
     public function deleteQuizById($id) {
-        $pdo = new \PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USERNAME, DB_PASSWORD);
+        $pdo = $this->createPDODatabaseConnection();
         $sql = "DELETE FROM quizzes WHERE id = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam('id', $id);
