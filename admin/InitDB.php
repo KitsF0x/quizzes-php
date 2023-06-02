@@ -28,6 +28,14 @@ CREATE TABLE `quizzes` (
     `description` TEXT NULL , 
     PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
+    
+
+CREATE TABLE `questions` 
+    (`id` INT NOT NULL AUTO_INCREMENT ,
+    `quizId` INT NOT NULL ,
+    `text` TEXT NOT NULL ,
+    PRIMARY KEY (`id`)
+    ) ENGINE = InnoDB;
 ';
 
 $stmt = $pdo->prepare($sql);
