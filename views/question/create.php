@@ -1,14 +1,15 @@
 <?php require '../layout/up.php'; ?>
 
-<?php
-$quiz = new \models\Quiz();
-$quiz->getQuizBydId($_POST['id']);
+<?php 
+    require '../models/Quiz.php';
+    $quiz = new models\Quiz();
+    $quiz->getQuizBydId($quizId);
 ?>
 <div class="row d-flex justify-content-center">
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-                <h3 class="text-center"><?php echo $quiz->getTitle(); ?></h3>
+                <h3 class="text-center">Add a new question for <?php echo $quiz->getTitle(); ?> quiz</h3>
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
@@ -22,10 +23,7 @@ $quiz->getQuizBydId($_POST['id']);
                         </tr>
                     </tbody>
                 </table>
-                <form action="questionCreate.php" method="POST">
-                    <input type="hidden" value="<?php echo $quiz->getId(); ?>" name="quizId"> 
-                    <button class="btn btn-primary" type="submit">Add a new question</button>                   
-                </form>
+                <button class="btn btn-primary">Add a new question</button>
             </div>
         </div>
     </div>

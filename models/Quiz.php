@@ -4,7 +4,7 @@ namespace models;
 
 require_once 'Model.php';
 
-class Quiz extends Model{
+class Quiz extends Model {
 
     private $id;
     private $creatorId;
@@ -86,17 +86,32 @@ class Quiz extends Model{
             $model->setCreatorId($row['creatorId']);
             $model->setTitle($row['title']);
             $model->setDescription($row['description']);
-            
+
             array_push($arrayOfModels, $model);
         }
         return $arrayOfModels;
     }
-    
+
     public function deleteQuizById($id) {
         $pdo = $this->createPDODatabaseConnection();
         $sql = "DELETE FROM quizzes WHERE id = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam('id', $id);
         $stmt->execute();
+    }
+
+    public function getQuizBydId($id) {
+        $pdo = $this->createPDODatabaseConnection();
+        $sql = "SELECT * FROM quizzes WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam('id', $id);
+        $stmt->execute();
+
+        $data = $stmt->fetch();
+
+        $this->setId($id);
+        $this->setCreatorId($data['creatorId']);
+        $this->setTitle($data['title']);
+        $this->setDescription($data['description']);
     }
 }
